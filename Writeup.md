@@ -196,3 +196,23 @@ d1457b72c3fb323a2671125aef3eab5d``
 <br>Now, our goal is the 2nd flag
 <br>There are a bunch of Money[num] folders inside the zip file
 <br>The hint given to us earlier is the source code ``<!-- What is ASCII? -->``
+<br>Looking into some ofthe folders there are money images
+<br>So the solution to this is that you can add up the money in the folder and turn them from ASCII to text using websites like https://www.duplichecker.com/ascii-to-text.php
+<br>Let's say the first folder "Money1" has 1 RM50, 1 RM10, 1 Rm5 and 2 RM1
+<br>Adding them up equals to RM67
+<br>So turning ascii 67 to text is C<br>
+<br><img width="591" alt="image" src="https://user-images.githubusercontent.com/79892065/159523651-a60103bd-2265-4ea7-8a47-3b3547351931.png">
+<br>We'll try two more
+<br>The second folder "Money2" has 1 RM50, 1 RM20, 1RM10 and 4 RM1
+<br>Adding them up equals to 84
+<br>Turning ascii 84 to text is T<br>
+<br><img width="559" alt="image" src="https://user-images.githubusercontent.com/79892065/159523997-959e7ed3-7dde-4fa5-a475-89072b6e6ee8.png">
+<br>Last one
+<br>The third folder "Money3" has 1 RM50 and 1 RM20
+<br>Adding them up equals to RM70
+<br>Turning ascii 70 to text is F<br>
+<br><img width="556" alt="image" src="https://user-images.githubusercontent.com/79892065/159524191-2730e05c-fb07-4b5a-8ace-a1340e987e13.png">
+<br>And so on...
+<br>So after doing all the "Money" you'll end up getting the 2nd flag
+<br>So now you've got the 1st flag, 2nd flag and 3rd flag!
+<br>Congratulations! You just solved the Jeale CTF!
