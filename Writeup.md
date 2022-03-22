@@ -194,3 +194,5 @@ d1457b72c3fb323a2671125aef3eab5d``
 <br>So number 32 could be base32, let's try deciphering it with base32
 <br>Deciphering it results in the first flag!
 <br>Now, our goal is the 2nd flag
+<br>There are a bunch of Money[num] folders inside the zip file
+<br>The hint given to us earlier is the source code ``<!-- What is ASCII? -->``
