@@ -27,7 +27,7 @@ Hello! This is the writeup for the Jeal CTF, let's jump straight into it!<br>
     * Steganography
         * favicon.jpg
 
-<br>Looking deeper into the source code, there is a hint telling us to stop right there. So let's stop looking down to the source code.
+<br>Looking deeper into the source code, there is a hint telling us to stop right there. So let's stop looking down to the source code.<br>
 <br><img width="337" alt="image" src="https://user-images.githubusercontent.com/79892065/159478711-7e8e0826-744b-4668-93f0-f8f8f29e37d7.png">
 <br>The source code we just looked into is the /home, why not we try to look into the /ctf/about, /ctf/testimonials/ and /ctf/contacts/
 <br>All of them says that "Coming Soon' and a number showing the days left<br>
@@ -46,7 +46,7 @@ Hello! This is the writeup for the Jeal CTF, let's jump straight into it!<br>
         * favicon.jpg
 
 <br>So now our goal is to get the first and the second flag.
-<br>Let's try checking the robots.txt in /ctf/robots.txt and we see two disallows
+<br>Let's try checking the robots.txt in /ctf/robots.txt and we see two disallows<br>
 <br><img width="658" alt="image" src="https://user-images.githubusercontent.com/79892065/159481578-a0dc2877-bc95-48aa-8bc8-0a013cc30189.png">
 <br>Hm, /jeales_vigenere.html and /W4ht_a3di0_1s_th1s.html
 <br>Let's visit /jeales_vigenere.html first on /ctf/jeales_vigenere.html
@@ -57,13 +57,13 @@ encodedkey = VFZSRk0xbFVWWGxOUjBacldXMVJlRTlYVm0xYWFsVjRUVlJCZDAxcVJURlpWMFV6V1Z
 <br>Opening cyberchef and decode the key with base64 we get a hash<br>
 <br><img width="761" alt="image" src="https://user-images.githubusercontent.com/79892065/159482474-0709df60-170d-4205-9774-849a46bd34bb.png">
 <br>Googling the hash we get to know that the key is "mysupersecretpassword"
-<br>So since it is vigenere cipher we can decipher it on cyberchef
+<br>So since it is vigenere cipher we can decipher it on cyberchef<br>
 <br><img width="767" alt="image" src="https://user-images.githubusercontent.com/79892065/159483063-b67b595d-6c0c-4eac-b734-097edc7a7a71.png">
 <br>We decipherd it!
 <br>``Jeale talked to her ISP a while ago, she said: "Hello, I've hidden my wifi password in a html file called w1f1_p@ssw0rrD." I need your help to help me find her wifi password, please...``
-<br>Aight, let's go to /ctf/w1f1_p@ssw0rrD.html
+<br>Aight, let's go to /ctf/w1f1_p@ssw0rrD.html<br>
 <br><img width="954" alt="image" src="https://user-images.githubusercontent.com/79892065/159483338-71a77cc0-b40e-482a-b37a-6356c5085f7a.png">
-<br>This looks like rot13 so let's decipher it
+<br>This looks like rot13 so let's decipher it<br>
 <br><img width="767" alt="image" src="https://user-images.githubusercontent.com/79892065/159483434-74da27c8-7c0c-4b29-98ab-99f2c9aea9b8.png">
 <br>``Jeale t01d m3 th@t sh3 u3e h3r p@s$w0rD m0st1y on 1mag3s 3nd n3tw0rk1ng stU77, b4t sh3 ha3 f0rgo773n it n0w. Sh3 t0ld m3 to f1nd it b3fore the w3bs1te is f1nish3d,or 3lse...... Anyw@y3, can y0u h3lp m3 f1nd 1t?``
 <br>0_0 it says that Jeale uses her password mostly on images and networking
@@ -77,11 +77,11 @@ encodedkey = VFZSRk0xbFVWWGxOUjBacldXMVJlRTlYVm0xYWFsVjRUVlJCZDAxcVJURlpWMFV6V1Z
             * wifi_password
            
 <br>Downloading the wifi .cap file we can try to brute force it with rockyou.txt :>
-<br>To make sure it's a handshake file run eapol on wireshark and yes it is!
+<br>To make sure it's a handshake file run eapol on wireshark and yes it is!<br>
 <br><img width="430" alt="image" src="https://user-images.githubusercontent.com/79892065/159484318-b91a22d0-891a-4635-a4f5-66319f3639c1.png">
 <br>The source code of /ctf/w1f1_p@ssw0rrd also says this
 <br>``<!--Is wifi password crackable?-->``
-<br>Running the code ``aircrack-ng jeale_s4cret_n4tw0rk_data.cap -w /usr/share/wordlists/rockyou.txt`` on Kali Linux and it would take a while to brute force with rockyou.txt so be patient :S
+<br>Running the code ``aircrack-ng jeale_s4cret_n4tw0rk_data.cap -w /usr/share/wordlists/rockyou.txt`` on Kali Linux and it would take a while to brute force with rockyou.txt so be patient :S<br>
 <br><img width="699" alt="image" src="https://user-images.githubusercontent.com/79892065/159494753-552bbbdc-0ce7-44d9-bc4d-3a042ad8ff0c.png">
 <br>We got it! It took nearly 1 hour but it was worth it XD.
 <br>So the password is "imsohandsome"
@@ -93,7 +93,7 @@ encodedkey = VFZSRk0xbFVWWGxOUjBacldXMVJlRTlYVm0xYWFsVjRUVlJCZDAxcVJURlpWMFV6V1Z
         * favicon.jpg
             * imsohandsome
 
-<br>Now, let's check on another html file /ctf/W4ht_a3di0_1s_th1s.html
+<br>Now, let's check on another html file /ctf/W4ht_a3di0_1s_th1s.html<br>
 <br><img width="903" alt="image" src="https://user-images.githubusercontent.com/79892065/159495211-858fb0b0-1f47-403c-92e2-0fb7e86522d6.png">
 <br>``w6JP xVG6 DE@=6? D@>6 2F5:@ 7:=6D 7C@> y62=6VD 4@>AFE6C 3FE x 92G6 23D@=FE6=J ?@ 4=F6 23@FE :E[ 42? J@F 96=A >6 @FEn``
 <br>Hm, checking the source code it says ``<!--Jeale loves many numbers, one of them is 47-->``
@@ -101,9 +101,9 @@ encodedkey = VFZSRk0xbFVWWGxOUjBacldXMVJlRTlYVm0xYWFsVjRUVlJCZDAxcVJURlpWMFV6V1Z
 <br><img width="766" alt="image" src="https://user-images.githubusercontent.com/79892065/159495488-3970bdb5-b205-4c02-8960-1d2271bb9164.png">
 <br>``Hey! I've stolen some audio files from Jeale's computer but I have absolutely no clue about it, can you help me out?``
 <br>Just a description... Let's download the audio files and analyze them
-<br> Maybe its audio spectrogram? 
-<br><img width="316" alt="image" src="https://user-images.githubusercontent.com/79892065/159496205-36c2acd7-d698-469f-81ac-45f2eacdbf92.png">
-<br><img width="317" alt="image" src="https://user-images.githubusercontent.com/79892065/159496261-261f214c-15a8-4824-bb7b-f3e129323ba9.png">
+<br> Maybe its audio spectrogram? <br>
+<br><img width="316" alt="image" src="https://user-images.githubusercontent.com/79892065/159496205-36c2acd7-d698-469f-81ac-45f2eacdbf92.png"><br>
+<br><img width="317" alt="image" src="https://user-images.githubusercontent.com/79892065/159496261-261f214c-15a8-4824-bb7b-f3e129323ba9.png"><br>
 <br><img width="320" alt="image" src="https://user-images.githubusercontent.com/79892065/159496307-62b7da83-c7ea-4173-9e54-a2f73793c9a9.png">
 <br>We got 6 hashes! Let's write it down to a text editor
 <br>``b27cac074cc5c17f83c7c9e8071002e3
@@ -112,7 +112,7 @@ encodedkey = VFZSRk0xbFVWWGxOUjBacldXMVJlRTlYVm0xYWFsVjRUVlJCZDAxcVJURlpWMFV6V1Z
 8bf8854bebe108183caeb845c7676ae4
 5292c527e0e77b38813bc63bdac7ddd5
 d1457b72c3fb323a2671125aef3eab5d``
-<br>Using https://crackstation.net we got the plain text!
+<br>Using https://crackstation.net we got the plain text!<br>
 <br><img width="788" alt="image" src="https://user-images.githubusercontent.com/79892065/159497245-2ebef95a-b4fc-40e3-b950-ea952c3a6be4.png">
 <br>``Have you heard of steghide?`` tells us that we can use steghide to extract the data with the password ``imsohandsome``!
 
@@ -124,10 +124,10 @@ d1457b72c3fb323a2671125aef3eab5d``
             * imsohandsome
 
 <br>Let's download the favicon.jpg using wget in Kali Linux
-<br>Using the command ``steghide extract -sf favicon.jpg`` 
+<br>Using the command ``steghide extract -sf favicon.jpg`` <br>
 <br><img width="392" alt="image" src="https://user-images.githubusercontent.com/79892065/159498011-7901fb8c-c594-4bef-a2d7-30e5601e9641.png">
 <br>Entering passphrase "imsohandsome" we extracted a textfile called "jeale.txt"!
-<br>Reading the content inside jeale.txt we get
+<br>Reading the content inside jeale.txt we get<br>
 <br><img width="945" alt="image" src="https://user-images.githubusercontent.com/79892065/159500688-d90882fc-36ae-43a9-af60-23ad27eea937.png">
 <br>``//Jung vf ornyr pvcure?``<br>
 ``//9 2 5 12 9 5 22 5 10 5 1 12 5 9 19 1 13 1 12 1 25 19 9 1 14``<br>
@@ -136,11 +136,11 @@ d1457b72c3fb323a2671125aef3eab5d``
 ``477 46 41 46 125 565 177 125 477 403 46 34 41 380 304 142 125 304 403 565 46 380 403 477 177 403 165 443``<br>
 ``403 41 380 414 565 403 {01011001}``
 <br>Alright... Let's decipher the first text ``//Jung vf ornyr pvcure?``
-<br>Deciphering using ROT13 and we get
+<br>Deciphering using ROT13 and we get<br>
 <br><img width="696" alt="image" src="https://user-images.githubusercontent.com/79892065/159498838-1296b2dc-7945-4ca8-b4e3-d48f1f935349.png">
 <br>//What is beale cipher?
 <br>Looking up beale cipher in google we see that there are 3 sets of ciphered text and only one of them is deciphered
-<br>Let's see how it was decrypted
+<br>Let's see how it was decrypted<br>
 <br><img width="805" alt="image" src="https://user-images.githubusercontent.com/79892065/159499174-03b48bcb-e8e9-47e5-bfaf-b462aa2d1561.png">
 <br>Ther wikipedia says: "To decrypt it, one finds the word corresponding to the number (e.g., the first number is 115, and the 115th word in the United States Declaration of Independence is "instituted"), and takes the first letter of that word (in the case of the example, "I").
 <br>Hmm ok... Let's see the second line
@@ -148,7 +148,7 @@ d1457b72c3fb323a2671125aef3eab5d``
 <br>``I'm not so sure what this ciphered text means.. Let's see the third line``
 <br>``//Have you ever heard of a chef named cyber?``
 <br>Oh, cyberchef. We fire up cyberchef
-<br>We try pasting the second line of ciphered text inside:
+<br>We try pasting the second line of ciphered text inside:<br>
 <br><img width="481" alt="image" src="https://user-images.githubusercontent.com/79892065/159501634-74fd3936-9b9c-40af-832a-f1439643da77.png">
 <br>A1Z26 Cipher Decode... and since we deciphered it, we get ``ibelievejealeisamalaysian``
 <br>Hmm, since above has already mentioned that the beale cipher uses the Unites States Declaration of Independence, let's try the Malaysia Declaration of Independence!
