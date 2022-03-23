@@ -10,7 +10,7 @@ Hello! This is the writeup for the Jeal CTF, let's jump straight into it!<br>
 <br>So let's try to curl /ctf and see if there's anything interesting
 <br>After we curl /ctf, we got this<br>
 ``<!--Jeale: Phew, nobody can see this. Do you know what is steganography?-->``
-<br>Looks like there's something to do with steganography, keep that in mine
+<br>Looks like there's something to do with steganography, keep that in mind
 
 * Hints
     * Steganography
