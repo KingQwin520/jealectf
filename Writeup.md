@@ -139,8 +139,8 @@ d1457b72c3fb323a2671125aef3eab5d``
 <br>Deciphering using ROT13 and we get<br>
 <br><img width="696" alt="image" src="https://user-images.githubusercontent.com/79892065/159498838-1296b2dc-7945-4ca8-b4e3-d48f1f935349.png">
 <br>//What is beale cipher?
-<br>Looking up beale cipher in google we see that there are 3 sets of ciphered text and only one of them is deciphered
-<br>Let's see how it was decrypted<br>
+<br>Looking up beale cipher in google we see that they are 3 sets of ciphered text and only one of them is deciphered
+<br>Let's see how it was deciphered<br>
 <br><img width="805" alt="image" src="https://user-images.githubusercontent.com/79892065/159499174-03b48bcb-e8e9-47e5-bfaf-b462aa2d1561.png">
 <br>Ther wikipedia says: "To decrypt it, one finds the word corresponding to the number (e.g., the first number is 115, and the 115th word in the United States Declaration of Independence is "instituted"), and takes the first letter of that word (in the case of the example, "I").
 <br>Hmm ok... Let's see the second line
