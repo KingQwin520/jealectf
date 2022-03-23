@@ -16,9 +16,21 @@ Hello! This is the writeup for the Jeal CTF, let's jump straight into it!<br>
     * Steganography
 
 <br>Alright, let's move back to the website<br>
+<br>We are greeted with a login page, checking the source code it looks like it's using StatiCrypt to encrypt the website<br>
+<br><img width="735" alt="image" src="https://user-images.githubusercontent.com/79892065/159641014-7f035ae6-f3de-4f62-9cec-0502e06bef5c.png">
+<br>There's a C program called "Login C Program", let's check it out<br>
+<br><img width="498" alt="image" src="https://user-images.githubusercontent.com/79892065/159641137-b2c429e0-04d8-4f56-82a1-dd5eeafb3b7e.png">
+<br>This is easy... Just do some maths 
+<br>(4719 + 821) / 2 = 2770
+<br>So we got the password to login to the website, now we see this<br>
 <br><img width="943" alt="image" src="https://user-images.githubusercontent.com/79892065/159477088-365b2050-de70-4ddc-a0b9-e066239cfaa2.png">
 <br>Hm, right click, f12, CTRL+SHIFT+I and CTRL+SHIFT+J is disabled, but we can still view the source using view-source:
-<br>Looking into the source code and there's something interesting in /ctf/style.css<br>
+<br>This is a StatiCrypt obfuscated html code so we can't view the source code but there's something in there...
+<br><img width="439" alt="image" src="https://user-images.githubusercontent.com/79892065/159641527-faa50208-ad06-4da6-990a-177f21ada9ea.png">
+<br>``<!-- Source is at /ctf/home/source :> -->``
+<br>Let's go to /ctf/home/source and we see the source code!<br>
+<br><img width="752" alt="image" src="https://user-images.githubusercontent.com/79892065/159641643-8ce7f2b0-226b-4ee4-9c14-97e4822fd967.png">
+<br>Looking into the source code we find /ctf/style.css, maybe there's something in there?<br>
 <br><img width="405" alt="image" src="https://user-images.githubusercontent.com/79892065/159477654-84cfba4c-5f9f-4b10-9805-f09e2cd70bfb.png">
 <br>Favicon.... Maybe that's something related to steganography. And indeed there is a favicon.jpg file on their website<br>
 <br><img width="537" alt="image" src="https://user-images.githubusercontent.com/79892065/159478555-0a4ca0ad-5fec-410a-a63d-48268faf330a.png">
@@ -27,9 +39,9 @@ Hello! This is the writeup for the Jeal CTF, let's jump straight into it!<br>
     * Steganography
         * favicon.jpg
 
-<br>Looking deeper into the source code, there is a hint telling us to stop right there. So let's stop looking down to the source code.<br>
-<br><img width="337" alt="image" src="https://user-images.githubusercontent.com/79892065/159478711-7e8e0826-744b-4668-93f0-f8f8f29e37d7.png">
-<br>The source code we just looked into is the /home, why not we try to look into the /ctf/about, /ctf/testimonials/ and /ctf/contacts/
+<br><img width="639" alt="image" src="https://user-images.githubusercontent.com/79892065/159642212-6835613f-55ca-4d1f-bd53-e800e39a0d72.png">
+<br>Looking deeper into the source code, there is a hint telling us to stop right there. So let's stop looking down to the source code.<br><br>
+<br>The source code we just looked into is the /home, why not we try to look into the /ctf/about, /ctf/testimonials/ and /ctf/contacts/ since their source code is not obfuscated
 <br>All of them says that "Coming Soon' and a number showing the days left<br>
 <br><img width="711" alt="image" src="https://user-images.githubusercontent.com/79892065/159479389-40ad7952-a68b-49f4-9042-1001f32b55d0.png">
 <br>Inspect element is also disabled so let's try looking into the source code
