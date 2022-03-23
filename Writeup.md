@@ -145,7 +145,7 @@ d1457b72c3fb323a2671125aef3eab5d``
 <br>Ther wikipedia says: "To decrypt it, one finds the word corresponding to the number (e.g., the first number is 115, and the 115th word in the United States Declaration of Independence is "instituted"), and takes the first letter of that word (in the case of the example, "I").
 <br>Hmm ok... Let's see the second line
 <br>``//9 2 5 12 9 5 22 5 10 5 1 12 5 9 19 1 13 1 12 1 25 19 9 1 14``
-<br>``I'm not so sure what this ciphered text means.. Let's see the third line``
+<br>I'm not so sure what this ciphered text means.. Let's see the third line
 <br>``//Have you ever heard of a chef named cyber?``
 <br>Oh, cyberchef. We fire up cyberchef
 <br>We try pasting the second line of ciphered text inside:<br>
