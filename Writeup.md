@@ -182,11 +182,20 @@ d1457b72c3fb323a2671125aef3eab5d``
 <br>Note: The last cipher text {01011001} is a binary and converting to text is a Y
 <br>Now we got the clue to go to sEcREtmonEy.html, let's see whats inside!
 <br>We see two things:<br>
-<br><img width="663" alt="image" src="https://user-images.githubusercontent.com/79892065/159514395-dbeae3fc-6aae-44bc-941e-bbcab0664f25.png">
+<br><img width="555" alt="image" src="https://user-images.githubusercontent.com/79892065/159833812-984efa3a-b5a3-44f9-9f21-58862fc810f5.png">
 <br>The source code gives us hint ``<!-- What is ASCII? -->``
-<br>That tells is the following challenge might be relatable to ASCII
-<br>Let's download the Jeale's Conversation file first
-<br>Listening to it, it's definately morse code, let's try to decode it
+<br>That tells one of the following challenge might be relatable to ASCII
+<br>Let's download the Jeale's Obfuscated Conversation first
+<br>It's a .bat file, opening it we see a bunch of chinese characters
+<br>Hmm, let's try running the .bat file first, we get a conversation.mp3 and hint file<br>
+<br><img width="532" alt="image" src="https://user-images.githubusercontent.com/79892065/159836445-80e3eec2-91de-4cb9-8b9d-a62d4208f6ef.png">
+<br>convesation.mp3 seems to be corrupted, let's open it with a text editor<br>
+<br><img width="887" alt="image" src="https://user-images.githubusercontent.com/79892065/159836603-0df1b566-efda-47e1-95d2-9457100e2751.png">
+<br>Holy! That's a lot of text over there, let's view the "hint" file first
+<br>It says ``//Jeale loves certutil!``
+<br>Googling certutil embed file, we get to know that certutil is a built-in windows feature. We can decode it by using the following command
+<br>``certutil -f -decode conversation.mp3 conversationputput.mp3``
+<br>After that, we get to hear the audio, it's a morse code!
 <br>https://morsecode.world/international/decoder/audio-decoder-adaptive.html
 <br>Decoding it we get:
 <br>``JEALE IS EVIL. I INTERCEPTED A RADIO OF A MESSAGE OF HER TALKING TO SOME GOVERNMENT OFFICIALS. JEALE:" I AM GOING TO TRANSFER MY BLACK MONEY TO SEPARATED BANK ACCOUNTS IN DIFFERENT COUNTRIES. TSEE PASSWORD FOR ALL OF THE BANK ACCOUK IS GOING TO BE THE MOST COMMON PASSWORD FOR PROTECTING A MALWARE SAMPLE ZIP FILE... DO NOT INTERRUPT OR INVESTIGATE ANYTHING ABOUT ME, THANK YOU.``
