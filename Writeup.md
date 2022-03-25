@@ -18,10 +18,22 @@ Hello! This is the writeup for the Jeal CTF, let's jump straight into it!<br>
 <br>Alright, let's move back to the website<br>
 <br>We are greeted with a login page, checking the source code it looks like it's using StatiCrypt to encrypt the website<br>
 <br><img width="735" alt="image" src="https://user-images.githubusercontent.com/79892065/159641014-7f035ae6-f3de-4f62-9cec-0502e06bef5c.png">
-<br>There's a C program called "Login C Program", let's check it out<br>
-<br><img width="498" alt="image" src="https://user-images.githubusercontent.com/79892065/159641137-b2c429e0-04d8-4f56-82a1-dd5eeafb3b7e.png">
-<br>This is easy... Just do some maths 
-<br>(4719 + 821) / 2 = 2770
+<br>There's a batch program called "Login Batch File", let's check it out<br>
+<br><img width="825" alt="image" src="https://user-images.githubusercontent.com/79892065/160163926-4fd01a1c-3014-41f5-bde1-664b36caeb87.png">
+<br>Inside the batch file, it has some chinese characters, hm...
+<br>Maybe it's some kind of batch obfuscation? Let's google and see some github repos
+<br>This may help ``https://github.com/BiggerDABOSS/BatchObfuscator/blob/master/Deobfuscation.cmd``
+<br>Let's copy the code inside the deobfuscation.cmd and create a new file with the code<br>
+<br><img width="420" alt="image" src="https://user-images.githubusercontent.com/79892065/160164809-ddd1be71-d593-41ef-b4c7-ac2fbf08ab60.png">
+<br>Now we need to run `` ./deobfuscator.cmd login.bat``
+<br>We got a file named ``login___.bat``, this is the deobfuscated batch file<br>
+<br><img width="941" alt="image" src="https://user-images.githubusercontent.com/79892065/160165181-17799bc7-2fc9-482b-ac89-7674d9b34167.png">
+<br>Hmmm, let's try to echo out every line and see what happens
+<br>Doing ``echo @%pUBlIc:~89,83%%PUBLic:~5,1%CHo^ of^%PuBlIC:~46,16%f `` gives us echo off, great! Now we just have to do for the rest of it
+<br>The second one is ``SEt R=JgigtGXzswbhmuSHIOA``, remember to set this variable or else the next few parts without the variable it would be gibberish
+<br>After echoing all of them we get this<br>
+<br><img width="522" alt="image" src="https://user-images.githubusercontent.com/79892065/160166437-b3b86f12-c020-4284-8633-68ab5c824a0b.png">
+<br>Nice! The password to login into the website seems to be ``M0stS3cur3P@@sw0rD1nth3w0r1d``
 <br>So we got the password to login to the website, now we see this<br>
 <br><img width="943" alt="image" src="https://user-images.githubusercontent.com/79892065/159477088-365b2050-de70-4ddc-a0b9-e066239cfaa2.png">
 <br>Hm, right click, f12, CTRL+SHIFT+I and CTRL+SHIFT+J is disabled, but we can still view the source using view-source:
