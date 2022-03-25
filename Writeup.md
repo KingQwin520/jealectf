@@ -17,7 +17,7 @@ Hello! This is the writeup for the Jeal CTF, let's jump straight into it!<br>
 
 <br>Alright, let's move back to the website<br>
 <br>We are greeted with a login page, checking the source code it looks like it's using StatiCrypt to encrypt the website<br>
-<br><img width="735" alt="image" src="https://user-images.githubusercontent.com/79892065/159641014-7f035ae6-f3de-4f62-9cec-0502e06bef5c.png">
+<br><img width="471" alt="image" src="https://user-images.githubusercontent.com/79892065/160166935-4afa846f-9e71-4326-9236-525f107bc298.png">
 <br>There's a batch program called "Login Batch File", let's check it out<br>
 <br><img width="825" alt="image" src="https://user-images.githubusercontent.com/79892065/160163926-4fd01a1c-3014-41f5-bde1-664b36caeb87.png">
 <br>Inside the batch file, it has some chinese characters, hm...
