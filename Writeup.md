@@ -7,15 +7,31 @@ Hello! This is the writeup for the Jeal CTF, let's jump straight into it!<br>
 <br><img width="892" alt="image" src="https://user-images.githubusercontent.com/79892065/159476255-a0835576-6e2c-47fe-b178-9ad5f93a57cf.png">
 <br>So this must be the challenge description
 <br>After we clicked "Start from here", we were redirected to /ctf/home.
-<br>So let's try to curl /ctf and see if there's anything interesting
+<br>Let's check the robots.txt in /ctf/robots.txt and we see this<br>
+<br><img width="579" alt="image" src="https://user-images.githubusercontent.com/79892065/160224114-84795dfc-2c3a-48e6-b4fd-88dc1745f4a1.png">
+<br>It says ``# Is this really the only robots.txt in this website?``
+<br>Maybe there is another robots.txt file in this website?
+<br><img width="658" alt="image" src="https://user-images.githubusercontent.com/79892065/159481578-a0dc2877-bc95-48aa-8bc8-0a013cc30189.png">
+<br>There is also a disallow ``Disallow: /ctf/index.html``
+<br>So let's try to curl /ctf/ and see if there's anything interesting
 <br>After we curl /ctf, we got this<br>
-``<!--Jeale: Phew, nobody can see this. Do you know what is steganography?-->``
-<br>Looks like there's something to do with steganography, keep that in mind
+<br><img width="879" alt="image" src="https://user-images.githubusercontent.com/79892065/160223929-0045424b-09b2-4c3c-ae0b-ea0bd0dd5c6f.png">
+<br>It says it's Jeale's Personal Page, scrolling down, we see a ``l0gs.html`` and ``<!--Jeale: Phew, nobody can see this. Do you know what is steganography?-->``
+<br>Curling l0gs.html, we see a server.log file<br>
+<br><img width="856" alt="image" src="https://user-images.githubusercontent.com/79892065/160223952-0fc46a6d-a465-4fdf-b643-904bd2b01d75.png">
+<br>Let's view it on the website in ``/ctf/server.log``
+<br><img width="952" alt="image" src="https://user-images.githubusercontent.com/79892065/160223971-7e1fbf64-ef68-4962-a5c7-d8d2ab527222.png">
+<br>We see ``http://localhost/ctf/m0st%5Fh3rd3st%5F3ncrypt3d%5Fr0bot%2Etxt``, following the url leads us to a page that shows base64 encoded text<br>
+<br><img width="958" alt="image" src="https://user-images.githubusercontent.com/79892065/160224006-6b695a36-6c61-42b8-abfd-c720acc1866e.png">
+<br>Decoding it in cyberchef with base64decode and urldecode we get the second robots.txt file!<br>
+<br><img width="766" alt="image" src="https://user-images.githubusercontent.com/79892065/160224031-6d4b9a30-3c39-47df-9f8b-adc458c58c0e.png">
+<br>Hm, /jeales_vigenere.html and /W4ht_a3di0_1s_th1s.html, let's check it later. We
+<br>There's also another thing when we curl /ctf, and that is the steganography, keep that in mind
 
 * Hints
     * Steganography
 
-<br>Alright, let's move back to the website<br>
+<br>Alright, let's move back to the website first<br>
 <br>We are greeted with a login page, checking the source code it looks like it's using StatiCrypt to encrypt the website<br>
 <br><img width="449" alt="image" src="https://user-images.githubusercontent.com/79892065/160218959-2a8e22ef-f3cd-4ffd-980c-fed093ab2935.png">
 <br>There's a batch program called "Login Batch File", let's check it out<br>
@@ -70,10 +86,8 @@ Hello! This is the writeup for the Jeal CTF, let's jump straight into it!<br>
         * favicon.jpg
 
 <br>So now our goal is to get the first and the second flag.
-<br>Let's try checking the robots.txt in /ctf/robots.txt and we see two disallows<br>
-<br><img width="658" alt="image" src="https://user-images.githubusercontent.com/79892065/159481578-a0dc2877-bc95-48aa-8bc8-0a013cc30189.png">
-<br>Hm, /jeales_vigenere.html and /W4ht_a3di0_1s_th1s.html
-<br>Let's visit /jeales_vigenere.html first on /ctf/jeales_vigenere.html
+<br>Alright, let's continue the /jeales_vigenere.html and /W4ht_a3di0_1s_th1s.html we got from the second robots.txt file earlier
+<br>We'll visit /jeales_vigenere.html first
 <br>We get:<br> ``cipher = Vcsft xrdogu xh wej AOD r ztgdy pkf, klg jebs: "Hwdhc, Z'yq faxsie ec yzjb eakkscig ul s biqc xmnv gtalwv s1t1_g@veu0jlS." M ewif psng hwdl hf kqjh gt jzfh jvv pxfa hwgjzapv, jairki...
 encodedkey = VFZSRk0xbFVWWGxOUjBacldXMVJlRTlYVm0xYWFsVjRUVlJCZDAxcVJURlpWMFV6V1ZSa2JWbHRXVDA9``
 <br>As we can see there is a cipher text and an encodedkey, so you need to decipher the cipher text using the key
