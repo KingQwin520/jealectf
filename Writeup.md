@@ -11,7 +11,6 @@ Hello! This is the writeup for the Jeal CTF, let's jump straight into it!<br>
 <br><img width="579" alt="image" src="https://user-images.githubusercontent.com/79892065/160224114-84795dfc-2c3a-48e6-b4fd-88dc1745f4a1.png">
 <br>It says ``# Is this really the only robots.txt in this website?``
 <br>Maybe there is another robots.txt file in this website?
-<br><img width="658" alt="image" src="https://user-images.githubusercontent.com/79892065/159481578-a0dc2877-bc95-48aa-8bc8-0a013cc30189.png">
 <br>There is also a disallow ``Disallow: /ctf/index.html``
 <br>So let's try to curl /ctf/ and see if there's anything interesting
 <br>After we curl /ctf, we got this<br>
