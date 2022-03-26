@@ -8,11 +8,14 @@ Hello! This is the writeup for the Jeal CTF, let's jump straight into it!<br>
 <br>So this must be the challenge description
 <br>After we clicked "Start from here", we were redirected to /ctf/home.
 <br>Let's check the robots.txt in /ctf/robots.txt and we see this<br>
-<br><img width="579" alt="image" src="https://user-images.githubusercontent.com/79892065/160224114-84795dfc-2c3a-48e6-b4fd-88dc1745f4a1.png">
+<br><img width="612" alt="image" src="https://user-images.githubusercontent.com/79892065/160245367-614de5d2-8ed6-4ce8-8336-f7ddff391461.png">
 <br>It says ``# Is this really the only robots.txt in this website?``
 <br>Maybe there is another robots.txt file in this website?
-<br>There is also a disallow ``Disallow: /ctf/index.html``
-<br>So let's try to curl /ctf/ and see if there's anything interesting
+<br>There is also two disallows ``Disallow: /ctf/index.html`` and ``/ctf/mayb3_th4_s3cr4t_fl4g.html``
+<br>Let's check /ctf/mayb3_th4_s3cr4t_fl4g.html first, going to there leads us to a rickroll 
+<br>Looking into source code nothing is inside so it's basically just a troll :<<br>
+<br><img width="648" alt="image" src="https://user-images.githubusercontent.com/79892065/160245429-f640fc7f-4a8e-451c-846a-9313af6ded5c.png">
+<br>Let's try to curl /ctf/ and see if there's anything interesting
 <br>After we curl /ctf, we got this<br>
 <br><img width="879" alt="image" src="https://user-images.githubusercontent.com/79892065/160223929-0045424b-09b2-4c3c-ae0b-ea0bd0dd5c6f.png">
 <br>It says it's Jeale's Personal Page, scrolling down, we see a ``l0gs.html`` and ``<!--Jeale: Phew, nobody can see this. Do you know what is steganography?-->``
