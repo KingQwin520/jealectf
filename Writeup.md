@@ -216,7 +216,7 @@ d1457b72c3fb323a2671125aef3eab5d``
 <br>Let's download the Jeale's Obfuscated Conversation first
 <br>It's a .bat file, opening it we see a bunch of chinese characters
 <br>Hmm, let's try running the .bat file first, we get a conversation.mp3 and hint file<br>
-<br><img width="532" alt="image" src="https://user-images.githubusercontent.com/79892065/159836445-80e3eec2-91de-4cb9-8b9d-a62d4208f6ef.png">
+<br><img width="527" alt="image" src="https://user-images.githubusercontent.com/79892065/160264904-1c90cb07-7857-4166-be45-4b364ae762ff.png">
 <br>convesation.mp3 seems to be corrupted, let's open it with a text editor<br>
 <br><img width="887" alt="image" src="https://user-images.githubusercontent.com/79892065/159836603-0df1b566-efda-47e1-95d2-9457100e2751.png">
 <br>Holy! That's a lot of text over there, let's view the "hint" file first
