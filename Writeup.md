@@ -37,20 +37,13 @@ Hello! This is the writeup for the Jeal CTF, let's jump straight into it!<br>
 <br>We are greeted with a login page, checking the source code it looks like it's using StatiCrypt to encrypt the website<br>
 <br><img width="449" alt="image" src="https://user-images.githubusercontent.com/79892065/160218959-2a8e22ef-f3cd-4ffd-980c-fed093ab2935.png">
 <br>There's a batch program called "Login Batch File", let's check it out<br>
-<br><img width="825" alt="image" src="https://user-images.githubusercontent.com/79892065/160163926-4fd01a1c-3014-41f5-bde1-664b36caeb87.png">
-<br>Inside the batch file, it has some chinese characters, hm...
-<br>Maybe it's some kind of batch obfuscation? Let's google and see some github repos
+<br><img width="655" alt="image" src="https://user-images.githubusercontent.com/79892065/161390355-d97d3d68-703b-4401-af55-c453fd79d7af.png">
+<br>Inside the batch file, it has some chinese characters, hm...<br>
+<br><img width="370" alt="image" src="https://user-images.githubusercontent.com/79892065/161390383-4a1811c6-8161-4d4f-9164-98f8284b82df.png">
+<br>Running the program we get to know that it's a batch obfuscation.
 <br>This may help ``https://github.com/BiggerDABOSS/BatchObfuscator/blob/master/Deobfuscation.cmd``
-<br>Let's copy the code inside the deobfuscation.cmd and create a new file with the code<br>
-<br><img width="420" alt="image" src="https://user-images.githubusercontent.com/79892065/160164809-ddd1be71-d593-41ef-b4c7-ac2fbf08ab60.png">
-<br>Now we need to run `` ./deobfuscator.cmd login.bat``
-<br>We got a file named ``login___.bat``, this is the deobfuscated batch file<br>
-<br><img width="941" alt="image" src="https://user-images.githubusercontent.com/79892065/160165181-17799bc7-2fc9-482b-ac89-7674d9b34167.png">
-<br>Hmmm, let's try to echo out every line and see what happens
-<br>Doing ``echo @%pUBlIc:~89,83%%PUBLic:~5,1%CHo^ of^%PuBlIC:~46,16%f `` gives us echo off, great! Now we just have to do for the rest of it
-<br>The second one is ``SEt R=JgigtGXzswbhmuSHIOA``, remember to set this variable or else the next few parts without the variable it would be gibberish
-<br>After echoing all of them we get this<br>
-<br><img width="522" alt="image" src="https://user-images.githubusercontent.com/79892065/160166437-b3b86f12-c020-4284-8633-68ab5c824a0b.png">
+<br>We can run `` ./deobfuscator.cmd login.bat`` and we got a deobfuscated batch file!<br>
+<br><img width="454" alt="image" src="https://user-images.githubusercontent.com/79892065/161390522-5d75769e-104b-43fa-ad2d-55418ea432b2.png">
 <br>Nice! The password to login into the website seems to be ``M0stS3cur3P@@sw0rD1nth3w0r1d``
 <br>So we got the password to login to the website, now we see this<br>
 <br><img width="943" alt="image" src="https://user-images.githubusercontent.com/79892065/159477088-365b2050-de70-4ddc-a0b9-e066239cfaa2.png">
