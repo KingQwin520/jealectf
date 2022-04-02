@@ -48,8 +48,8 @@ Hello! This is the writeup for the Jeal CTF, let's jump straight into it!<br>
 <br>So we got the password to login to the website, now we see this<br>
 <br><img width="943" alt="image" src="https://user-images.githubusercontent.com/79892065/159477088-365b2050-de70-4ddc-a0b9-e066239cfaa2.png">
 <br>Hm, right click, f12, CTRL+SHIFT+I and CTRL+SHIFT+J is disabled, but we can still view the source using view-source:
-<br>This is a StatiCrypt obfuscated html code so we can't view the source code but there's something in there...
-<br><img width="439" alt="image" src="https://user-images.githubusercontent.com/79892065/159641527-faa50208-ad06-4da6-990a-177f21ada9ea.png">
+<br>This is a StatiCrypt obfuscated html code so we can't view the source code but there's something in there...<br>
+<br><img width="470" alt="image" src="https://user-images.githubusercontent.com/79892065/161390774-384daf6f-52b3-485a-b2c1-ad6e0b4da69d.png">
 <br>``<!-- Source is at /ctf/home/source :> -->``
 <br>Let's go to /ctf/home/source and we see the source code!<br>
 <br><img width="752" alt="image" src="https://user-images.githubusercontent.com/79892065/159641643-8ce7f2b0-226b-4ee4-9c14-97e4822fd967.png">
