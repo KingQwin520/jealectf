@@ -224,9 +224,17 @@ d1457b72c3fb323a2671125aef3eab5d``
 <br>Alright, so we now have a password called "infected"
 <br>Now let's download the second file "Money.zip"
 <br>Unzip the file using the password given "infected"
-<br>There are files from Money 1 -> Money32, and there's also a money.jpg<br>
-<br><img width="634" alt="image" src="https://user-images.githubusercontent.com/79892065/159520716-3596e185-4fd0-4c67-b899-d68aa54a1bdf.png">
-<br>Let's look into money.jpg first
+<br>There are files from Money 1 -> Money32, and there's also a money.html file<br>
+<br><img width="757" alt="image" src="https://user-images.githubusercontent.com/79892065/161438020-410768dc-dd16-4444-a9ce-e664697c6c19.png">
+<br>Let's check the html file first<br>
+<br><img width="822" alt="image" src="https://user-images.githubusercontent.com/79892065/161438047-e04c9450-9d24-4543-89d7-bfa02a1ae14e.png">
+<br>Looks like we need to do some osint...
+<br>In Instagram searching for the name Jeale Saints we see this<br>
+<br><img width="654" alt="image" src="https://user-images.githubusercontent.com/79892065/161438075-de51d3d4-b505-45c1-a27c-dff80578718f.png">
+<br>Hm.. Let's try sending an email to ``jealesaints@gmail.com``
+<br><img width="445" alt="image" src="https://user-images.githubusercontent.com/79892065/161438117-89887493-8907-42c6-b0a3-8f9b51f4a935.png">
+<br>It worked! Checking into the url we see ``https://jeale.ml/ctf/youaresokind.zip``
+<br>Download the ``youaresokind.zip`` file and we got a money.jpg file
 <br>In Kali Linux, running the command ``binwalk -e money.jpg`` tells us that there's a hidden zip archieve file<br>
 <br><img width="949" alt="image" src="https://user-images.githubusercontent.com/79892065/159521380-4c6c6a40-2ae0-499b-8c18-0981d14176fa.png">
 <br>Changing the money.jpg file to money.zip file and extract them
