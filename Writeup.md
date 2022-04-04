@@ -1,6 +1,6 @@
 ## Jeale's CTF Writeup
 ### jeale [challenge]
-Hello! This is the writeup for the Jeal CTF, let's jump straight into it!<br>
+Hello! This is the writeup for the Jeale CTF, let's jump straight into it!<br>
 <br><img width="443" alt="image" src="https://user-images.githubusercontent.com/79892065/159476078-fd5c6711-9124-4aed-b470-58a9db9ef09b.png">
 <br>Going to https://jeale.ml/ and reading the rules, We know that the flag format is CTF{}, and there are 3 flags in the website.
 <br>So let's head off to the challenge section. Once we clicked on it, it redirects us to challenge.html.<br>
