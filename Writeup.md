@@ -86,18 +86,20 @@ Hello! This is the writeup for the Jeale CTF, let's jump straight into it!<br>
     * Steganography
         * favicon.jpg
 
-<br>So now our goal is to get the first and the second flag.
 <br>Alright, let's continue the /jeales_vigenere.html and /W4ht_a3di0_1s_th1s.html we got from the second robots.txt file earlier
 <br>We'll visit /jeales_vigenere.html first
-<br>We get:<br> ``cipher = Vcsft xrdogu xh wej AOD r ztgdy pkf, klg jebs: "Hwdhc, Z'yq faxsie ec yzjb eakkscig ul s biqc xmnv gtalwv s1t1_g@veu0jlS." M ewif psng hwdl hf kqjh gt jzfh jvv pxfa hwgjzapv, jairki...
-encodedkey = VFZSRk0xbFVWWGxOUjBacldXMVJlRTlYVm0xYWFsVjRUVlJCZDAxcVJURlpWMFV6V1ZSa2JWbHRXVDA9``
-<br>As we can see there is a cipher text and an encodedkey, so you need to decipher the cipher text using the key
+<br>We get:<br> ``cipher = Ywefh hpdoyg hv ftf XSG a pogcs ijw, ktt kecg: "Vtdpi, L'jl fxrsee mr dgww xdakidjh cq o wlqf iwsc roalvd p1m1_n@jge0uzV." U cwix bcjj lyod am wsap de yplu vmu earx hemvkdjh, joshqt...``
+<br>``encodedkey = CYdovinUpzCpUEF3ZUPC63s8VqSvHNRgod2vbZjREC6uHsuTY4gSECKLvWroeX3VfMH7cUsNmqSpACCzHLzsxxVo7xcsd56MNbRB7FGAD25vEpjxevNyN67PuGYBpAzwF9rAubjPqZg5ZsSHR4DWcFX6iyVMVQ1favAYWJuaJpLv8gSK5HHoKbM2zP7xRoM4GwRgZsn5HRWBAxftgVtiQ62m7XA8Ze5RPFXvEZFzBxkLH7jpUp1RpHdkGFdbhugfCiyYfBT3FG2x2gbkgwF9dXBNjgKaNE3Rcsu7zmYrXyoU1yLa2r84B5oBR4E5rVT62i7tvbvupvXB5mTzWF2XwqTRLFx8cZraENsS9mMBj7nT7o2piFWU8diCQrVfNVHoiMbbzWSp7V7zoniWxNdFRgmxYUmyVdx1jUdmddtkhVmLqEyBCE5MHSZGQb8d3Ji34ZcYAfqjZBxttRorpbwtSwJcAuL1M1MKv6vfc12YQALhM``
+<br>As we can see there is a cipher text and an encodedkey, so decipher the cipher text using the key
 <br>This is a vigenere cipher according to /jeales_vigenere.html
-<br>Opening cyberchef and decode the key with base64 we get a hash<br>
-<br><img width="761" alt="image" src="https://user-images.githubusercontent.com/79892065/159482474-0709df60-170d-4205-9774-849a46bd34bb.png">
-<br>Googling the hash we get to know that the key is "mysupersecretpassword"
+<br>It also gives us hint to use cyberchef<br>
+<br><img width="276" alt="image" src="https://user-images.githubusercontent.com/79892065/161592481-0b03cedc-b461-4062-87ea-766387a0e978.png">
+<br>Opening cyberchef and decode the key with base58 many times we get a hash<br>
+<br><img width="766" alt="image" src="https://user-images.githubusercontent.com/79892065/161592732-ffbdcd98-80c6-4c65-bb64-db3259fc86a2.png">
+<br>Go to https://crackstation.net, enter the hash and we got the key!<br>
+<br><img width="818" alt="image" src="https://user-images.githubusercontent.com/79892065/161592930-7536c4b8-f354-4a9a-a3f9-093705c7de20.png">
 <br>So since it is vigenere cipher we can decipher it on cyberchef<br>
-<br><img width="767" alt="image" src="https://user-images.githubusercontent.com/79892065/159483063-b67b595d-6c0c-4eac-b734-097edc7a7a71.png">
+<br><img width="960" alt="image" src="https://user-images.githubusercontent.com/79892065/161593067-de378c66-5c7a-4b56-b14a-daa7ee0b4439.png">
 <br>We decipherd it!
 <br>``Jeale talked to her ISP a while ago, she said: "Hello, I've hidden my wifi password in a html file called w1f1_p@ssw0rrD." I need your help to help me find her wifi password, please...``
 <br>Aight, let's go to /ctf/w1f1_p@ssw0rrD.html<br>
