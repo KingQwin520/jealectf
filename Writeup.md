@@ -245,10 +245,11 @@ d1457b72c3fb323a2671125aef3eab5d``
 <br>Looks like a conversation between Jeale and a police officer, it seems like the police officer received a ciphered text message
 <br>So number 32 could be base32, let's try deciphering it with base32
 <br>Deciphering it results in the first flag!
-<br>Now, our goal is the 2nd flag
-<br>There are a bunch of Money[num] folders inside the zip file
+<br>We got the first and the third flag
+<br>Now, our goal is to get the 2nd flag
+<br>There are a bunch of Money folders inside the Money.zip file
 <br>The hint given to us earlier is the source code ``<!-- What is ASCII? -->``
-<br>Looking into some ofthe folders there are money images
+<br>Looking into some of the folders there are money images
 <br>So the solution to this is that you can add up the money in the folder and turn them from ASCII to text using websites like https://www.duplichecker.com/ascii-to-text.php
 <br>Let's say the first folder "Money1" has 1 RM50, 1 RM10, 1 Rm5 and 2 RM1
 <br>Adding them up equals to RM67
