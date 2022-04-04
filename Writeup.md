@@ -230,7 +230,9 @@ d1457b72c3fb323a2671125aef3eab5d``
 <br><img width="822" alt="image" src="https://user-images.githubusercontent.com/79892065/161438047-e04c9450-9d24-4543-89d7-bfa02a1ae14e.png">
 <br>Looks like we need to do some osint...
 <br>In Instagram searching for the name Jeale Saints we see this<br>
-<br><img width="654" alt="image" src="https://user-images.githubusercontent.com/79892065/161438075-de51d3d4-b505-45c1-a27c-dff80578718f.png">
+<br><img width="646" alt="image" src="https://user-images.githubusercontent.com/79892065/161498871-b2b939a0-340c-4c69-8e0d-add2952af8b0.png">
+<br>Looking into the channel's about page we get to see the gmail account<br>
+<br><img width="864" alt="image" src="https://user-images.githubusercontent.com/79892065/161499240-7e288a12-3fcf-43f3-bc06-9d5a1a52ebe4.png">
 <br>Hm.. Let's try sending an email to ``jealesaints@gmail.com``
 <br><img width="445" alt="image" src="https://user-images.githubusercontent.com/79892065/161438117-89887493-8907-42c6-b0a3-8f9b51f4a935.png">
 <br>It worked! Checking into the url we see ``https://jeale.ml/ctf/youaresokind.zip``
