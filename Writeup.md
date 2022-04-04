@@ -53,9 +53,15 @@ Hello! This is the writeup for the Jeale CTF, let's jump straight into it!<br>
 <br>``<!-- Source is at /ctf/home/source :> -->``
 <br>Let's go to /ctf/home/source and we see the source code!<br>
 <br><img width="752" alt="image" src="https://user-images.githubusercontent.com/79892065/159641643-8ce7f2b0-226b-4ee4-9c14-97e4822fd967.png">
-<br>Looking into the source code we find /ctf/style.css, maybe there's something in there?<br>
-<br><img width="405" alt="image" src="https://user-images.githubusercontent.com/79892065/159477654-84cfba4c-5f9f-4b10-9805-f09e2cd70bfb.png">
-<br>Favicon.... Maybe that's something related to steganography. And indeed there is a favicon.jpg file on their website<br>
+<br>Checking into the source's source code, we see this<br>
+<br><img width="776" alt="image" src="https://user-images.githubusercontent.com/79892065/161543982-02d44563-1dc7-4153-a127-eec1bec63765.png">
+<br>It says ``<!--Jeale loves styling the website! -->``, hm
+<br>Let's check the css file of this website. It's located in /ctf/style.css<br>
+<br>In the css file we see this too<br>
+<br><img width="735" alt="image" src="https://user-images.githubusercontent.com/79892065/161544254-0afc032d-7520-4729-88bf-1b8c9309f55b.png">
+<br>``/* Hint: I made a favicon for Jeale's website and she likes it! There' nothing inside the image, for real!*/``
+<br>Favicon... maybe it's related to steganography.
+<br>The favicon file is in /ctf/home/favicon.jpg since the source code is located in /home 
 <br><img width="537" alt="image" src="https://user-images.githubusercontent.com/79892065/159478555-0a4ca0ad-5fec-410a-a63d-48268faf330a.png">
 
 * Hints
