@@ -19,11 +19,11 @@ Hello! This is the writeup for the Jeale CTF, let's jump straight into it!<br>
 <br>After we curl /ctf, we got this<br>
 <br><img width="879" alt="image" src="https://user-images.githubusercontent.com/79892065/160223929-0045424b-09b2-4c3c-ae0b-ea0bd0dd5c6f.png">
 <br>It says it's Jeale's Personal Page, scrolling down, we see a ``l0gs.html`` and ``<!--Jeale: Phew, nobody can see this. Do you know what is steganography?-->``
-<br>Curling l0gs.html, we see a server.log file<br>
-<br><img width="856" alt="image" src="https://user-images.githubusercontent.com/79892065/160223952-0fc46a6d-a465-4fdf-b643-904bd2b01d75.png">
-<br>Let's view it on the website in ``/ctf/server.log``
-<br><img width="952" alt="image" src="https://user-images.githubusercontent.com/79892065/160223971-7e1fbf64-ef68-4962-a5c7-d8d2ab527222.png">
-<br>We see ``http://localhost/ctf/m0st%5Fh3rd3st%5F3ncrypt3d%5Fr0bot%2Etxt``, following the url leads us to a page that shows base64 encoded text<br>
+<br>Curling l0gs.html, we see a s3rv7r.l0g file<br>
+<br><img width="488" alt="image" src="https://user-images.githubusercontent.com/79892065/161657431-edc4a60e-d19a-48ed-95dd-1c37e7389bda.png">
+<br>Let's download the ``/ctf/s3rv7r.l0g`` file
+<br><img width="948" alt="image" src="https://user-images.githubusercontent.com/79892065/161657495-caab076e-b1b2-4e76-a006-1b64187b054f.png">
+<br>We see ``https://jeale.ml/ctf/m0st%5Fh3rd3st%5F3ncrypt3d%5Fr0bot%2Etxt``, following the url leads us to a page that shows base64 encoded text<br>
 <br><img width="958" alt="image" src="https://user-images.githubusercontent.com/79892065/160224006-6b695a36-6c61-42b8-abfd-c720acc1866e.png">
 <br>Decoding it in cyberchef with base64decode and urldecode we get the second robots.txt file!<br>
 <br><img width="766" alt="image" src="https://user-images.githubusercontent.com/79892065/160224031-6d4b9a30-3c39-47df-9f8b-adc458c58c0e.png">
