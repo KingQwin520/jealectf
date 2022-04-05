@@ -15,7 +15,7 @@ Hello! This is the writeup for the Jeale CTF, let's jump straight into it!<br>
 <br>Let's check /ctf/mayb3_th4_s3cr4t_fl4g.html first, going to there leads us to a rickroll 
 <br>Looking into source code nothing is inside so it's basically just a troll :<<br>
 <br><img width="648" alt="image" src="https://user-images.githubusercontent.com/79892065/160245429-f640fc7f-4a8e-451c-846a-9313af6ded5c.png">
-<br>Let's try to curl /ctf/ and see if there's anything interesting
+<br>Let's curl /ctf/ and see if there's anything interesting
 <br>After we curl /ctf, we got this<br>
 <br><img width="879" alt="image" src="https://user-images.githubusercontent.com/79892065/160223929-0045424b-09b2-4c3c-ae0b-ea0bd0dd5c6f.png">
 <br>It says it's Jeale's Personal Page, scrolling down, we see a ``l0gs.html`` and ``<!--Jeale: Phew, nobody can see this. Do you know what is steganography?-->``
@@ -73,7 +73,7 @@ Hello! This is the writeup for the Jeale CTF, let's jump straight into it!<br>
 <br>The source code we just looked into is the /home, why not we try to look into the /ctf/about, /ctf/testimonials/ and /ctf/contacts/ since their source code is not obfuscated
 <br>All of them says that "Coming Soon' and a number showing the days left<br>
 <br><img width="711" alt="image" src="https://user-images.githubusercontent.com/79892065/159479389-40ad7952-a68b-49f4-9042-1001f32b55d0.png">
-<br>Inspect element is also disabled so let's try looking into the source code
+<br>Inspect element is also disabled so let's look into the source code
 <br>In /ctf/about we see
 <br>``<!-- I remember Jeale names her folder with some numbers and hides it after the page url, and each of the numbers are different every time. Where does these numbers come from?-->``
 <br>Damn, remember the numbers we got earlier that says "" days left? We can do something like https://[url]/about/[number]
@@ -119,7 +119,7 @@ Hello! This is the writeup for the Jeale CTF, let's jump straight into it!<br>
         * favicon.jpg
             * wifi_password
            
-<br>Downloading the wifi .cap file we can try to brute force it with rockyou.txt :>
+<br>Downloading the wifi .cap file we can brute force it with rockyou.txt :>
 <br>To make sure it's a handshake file run eapol on wireshark and yes it is!<br>
 <br><img width="430" alt="image" src="https://user-images.githubusercontent.com/79892065/159484318-b91a22d0-891a-4635-a4f5-66319f3639c1.png">
 <br>The source code of /ctf/w1f1_p@ssw0rrd also says this
@@ -218,7 +218,7 @@ d1457b72c3fb323a2671125aef3eab5d``
 <br>That tells one of the following challenge might be relatable to ASCII
 <br>Let's download the Jeale's Obfuscated Conversation first
 <br>It's a .bat file, opening it we see a bunch of chinese characters
-<br>Hmm, let's try running the .bat file first, we get a conversation.mp3 and hint file<br>
+<br>Hmm, let's run the .bat file first, we get a conversation.mp3 and hint file<br>
 <br><img width="527" alt="image" src="https://user-images.githubusercontent.com/79892065/160264904-1c90cb07-7857-4166-be45-4b364ae762ff.png">
 <br>convesation.mp3 seems to be corrupted, let's open it with a text editor<br>
 <br><img width="887" alt="image" src="https://user-images.githubusercontent.com/79892065/159836603-0df1b566-efda-47e1-95d2-9457100e2751.png">
@@ -241,9 +241,13 @@ d1457b72c3fb323a2671125aef3eab5d``
 <br>Looks like we need to do some osint...
 <br>In Instagram searching for the name Jeale Saints we see this<br>
 <br><img width="646" alt="image" src="https://user-images.githubusercontent.com/79892065/161498871-b2b939a0-340c-4c69-8e0d-add2952af8b0.png">
-<br>Looking into the channel's about page we get to see the gmail account<br>
-<br><img width="864" alt="image" src="https://user-images.githubusercontent.com/79892065/161499240-7e288a12-3fcf-43f3-bc06-9d5a1a52ebe4.png">
-<br>Hm.. Let's try sending an email to ``jealesaints@gmail.com``
+<br>Looking into the youtube channel's about page we see this<br>
+<br><img width="848" alt="image" src="https://user-images.githubusercontent.com/79892065/161677895-6452e61d-fc34-462b-b494-0d4e0b853212.png">
+<br>We can use a website called wayback machine to check if anyone has had archived the about page before<br>
+<br><img width="818" alt="image" src="https://user-images.githubusercontent.com/79892065/161678012-0035917d-3e5f-457b-8a46-6436436753c1.png">
+<br>Yup! Clicking into April 4th we see this<br>
+<br><img width="939" alt="image" src="https://user-images.githubusercontent.com/79892065/161678225-a4df89f3-cf3d-45ae-8fcb-cbf55a09282a.png">
+<br>Let's send an email to ``jealesaints@gmail.com``
 <br><img width="445" alt="image" src="https://user-images.githubusercontent.com/79892065/161438117-89887493-8907-42c6-b0a3-8f9b51f4a935.png">
 <br>It worked! Checking into the url we see ``https://jeale.ml/ctf/youaresokind.zip``
 <br>Download the ``youaresokind.zip`` file and we got a money.jpg file
@@ -253,7 +257,7 @@ d1457b72c3fb323a2671125aef3eab5d``
 <br>We get a folder called truth and a truth.txt file inside the folder<br>
 <br><img width="797" alt="image" src="https://user-images.githubusercontent.com/79892065/159521739-6a09ef38-874e-4236-ab16-bbc3a885424a.png">
 <br>Looks like a conversation between Jeale and a police officer, it seems like the police officer received a ciphered text message
-<br>So number 32 could be base32, let's try deciphering it with base32
+<br>So number 32 could be base32, let's decipher it with base32
 <br>Deciphering it results in the first flag!
 <br>We got the first and the third flag
 <br>Now, our goal is to get the 2nd flag
