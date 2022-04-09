@@ -3,32 +3,30 @@
 Hello! This is the writeup for the Jeale CTF, let's jump straight into it!<br>
 <br><img width="443" alt="image" src="https://user-images.githubusercontent.com/79892065/159476078-fd5c6711-9124-4aed-b470-58a9db9ef09b.png">
 <br>Going to https://jeale.ml/ and reading the rules, We know that the flag format is CTF{}, and there are 3 flags in the website.
-<br>So let's head off to the challenge section. Once we clicked on it, it redirects us to challenge.html.<br>
+<br>So let's head off to the challenge section. Once we clicked on it, it redirects us to https://jealectf.ml/challenge.<br>
 <br><img width="892" alt="image" src="https://user-images.githubusercontent.com/79892065/159476255-a0835576-6e2c-47fe-b178-9ad5f93a57cf.png">
 <br>So this must be the challenge description
-<br>After we clicked "Start from here", we were redirected to /ctf/home.
-<br>Let's check the robots.txt in /ctf/robots.txt and we see this<br>
-<br><img width="612" alt="image" src="https://user-images.githubusercontent.com/79892065/160245367-614de5d2-8ed6-4ce8-8336-f7ddff391461.png">
+<br>After we clicked "Start from here", we were redirected to /home.
+<br>Let's check the robots.txt in /robots.txt and we see this<br>
+<br><img width="455" alt="image" src="https://user-images.githubusercontent.com/79892065/162562368-d1d1f7ff-94ec-4451-ab4d-fc9d87d7f902.png">
 <br>It says ``# Is this really the only robots.txt in this website?``
 <br>Maybe there is another robots.txt file in this website?
-<br>There is also two disallows ``Disallow: /ctf/index.html`` and ``/ctf/mayb3_th4_s3cr4t_fl4g.html``
-<br>Let's check /ctf/mayb3_th4_s3cr4t_fl4g.html first, going to there leads us to a rickroll 
-<br>Looking into source code nothing is inside so it's basically just a troll :<<br>
+<br>There is also two disallows ``Disallow: /index.html`` and ``/mayb3_th4_s3cr4t_fl4g.html``
+<br>Checking /mayb3_th4_s3cr4t_fl4g.html leads us to a rickroll 
 <br><img width="648" alt="image" src="https://user-images.githubusercontent.com/79892065/160245429-f640fc7f-4a8e-451c-846a-9313af6ded5c.png">
-<br>Let's curl /ctf/ and see if there's anything interesting
-<br>After we curl /ctf, we got this<br>
+<br>Let's curl /index.html and see if there's anything interesting
 <br><img width="879" alt="image" src="https://user-images.githubusercontent.com/79892065/160223929-0045424b-09b2-4c3c-ae0b-ea0bd0dd5c6f.png">
 <br>It says it's Jeale's Personal Page, scrolling down, we see a ``l0gs.html`` and ``<!--Jeale: Phew, nobody can see this. Do you know what is steganography?-->``
 <br>Curling l0gs.html, we see a s3rv7r.l0g file<br>
-<br><img width="488" alt="image" src="https://user-images.githubusercontent.com/79892065/161657431-edc4a60e-d19a-48ed-95dd-1c37e7389bda.png">
-<br>Let's download the ``/ctf/s3rv7r.l0g`` file
-<br><img width="948" alt="image" src="https://user-images.githubusercontent.com/79892065/161657495-caab076e-b1b2-4e76-a006-1b64187b054f.png">
-<br>We see ``https://jeale.ml/ctf/m0st%5Fh3rd3st%5F3ncrypt3d%5Fr0bot%2Etxt``, following the url leads us to a page that shows base64 encoded text<br>
-<br><img width="958" alt="image" src="https://user-images.githubusercontent.com/79892065/160224006-6b695a36-6c61-42b8-abfd-c720acc1866e.png">
-<br>Decoding it in cyberchef with base64decode and urldecode we get the second robots.txt file!<br>
-<br><img width="766" alt="image" src="https://user-images.githubusercontent.com/79892065/160224031-6d4b9a30-3c39-47df-9f8b-adc458c58c0e.png">
-<br>Hm, /jeales_vigenere.html and /W4ht_a3di0_1s_th1s.html, let's check it later. We
-<br>There's also another thing when we curl /ctf, and that is the steganography, keep that in mind
+<br><img width="540" alt="image" src="https://user-images.githubusercontent.com/79892065/162562400-48a972dd-1c72-4957-a420-feb0db556b21.png">
+<br>Download the ``/s3rv7r.l0g`` file
+<br><img width="955" alt="image" src="https://user-images.githubusercontent.com/79892065/162562464-9df0934a-13b2-421f-a68c-cea3b049cef7.png">
+<br>We see ``https://jealectf.ml/3ncrypt3d%5Fr0bot%2Etxt``, following the url leads us to a page that shows base64 encoded text<br>
+<br><img width="959" alt="image" src="https://user-images.githubusercontent.com/79892065/162562484-ebc40718-972a-4479-8b68-50a132d949e1.png">
+<br>Decoding it with base64 we get the second robots.txt file!<br>
+<br><img width="480" alt="image" src="https://user-images.githubusercontent.com/79892065/162562505-28ae7629-a801-4339-9870-14c66c74cf57.png">
+<br>There is /jeales_vigenere and /W4ht_a3di0_1s_th1s, let's check it later.
+<br>There's also another hint when we curl /index.html, and that is the steganography, keep that in mind
 
 * Hints
     * Steganography
@@ -44,40 +42,40 @@ Hello! This is the writeup for the Jeale CTF, let's jump straight into it!<br>
 <br>This may help ``https://github.com/BiggerDABOSS/BatchObfuscator/blob/master/Deobfuscation.cmd``
 <br>We can run `` ./deobfuscator.cmd login.bat`` and we got a deobfuscated batch file!<br>
 <br><img width="454" alt="image" src="https://user-images.githubusercontent.com/79892065/161390522-5d75769e-104b-43fa-ad2d-55418ea432b2.png">
-<br>Nice! The password to login into the website seems to be ``M0stS3cur3P@@sw0rD1nth3w0r1d``
-<br>So we got the password to login to the website, now we see this<br>
+<br>The password to login into the website seems to be ``M0stS3cur3P@@sw0rD1nth3w0r1d``
+<br>We got the password to login to the website, we see this<br>
 <br><img width="943" alt="image" src="https://user-images.githubusercontent.com/79892065/159477088-365b2050-de70-4ddc-a0b9-e066239cfaa2.png">
-<br>Hm, right click, f12, CTRL+SHIFT+I and CTRL+SHIFT+J is disabled, but we can still view the source using view-source:
+<br>Right click, f12, CTRL+SHIFT+I and CTRL+SHIFT+J is disabled, but we can still view the source using view-source:
 <br>This is a StatiCrypt obfuscated html code so we can't view the source code but there's something in there...<br>
-<br><img width="470" alt="image" src="https://user-images.githubusercontent.com/79892065/161390774-384daf6f-52b3-485a-b2c1-ad6e0b4da69d.png">
-<br>``<!-- Source is at /ctf/home/source :> -->``
-<br>Let's go to /ctf/home/source and we see the source code!<br>
-<br><img width="752" alt="image" src="https://user-images.githubusercontent.com/79892065/159641643-8ce7f2b0-226b-4ee4-9c14-97e4822fd967.png">
-<br>Checking into the source's source code, we see this<br>
-<br><img width="776" alt="image" src="https://user-images.githubusercontent.com/79892065/161543982-02d44563-1dc7-4153-a127-eec1bec63765.png">
-<br>It says ``<!--Jeale loves styling the website! -->``, hm
-<br>Let's check the css file of this website. It's located in /ctf/style.css<br>
-<br>In the css file we see this too<br>
-<br><img width="735" alt="image" src="https://user-images.githubusercontent.com/79892065/161544254-0afc032d-7520-4729-88bf-1b8c9309f55b.png">
+<br><img width="462" alt="image" src="https://user-images.githubusercontent.com/79892065/162562935-5a61f841-0600-4a4c-b7da-27d0c0291543.png">
+<br>``<!-- Source is at /home/source :> -->``
+<br>Going to /home/source and we see the source code<br>
+<br><img width="673" alt="image" src="https://user-images.githubusercontent.com/79892065/162562988-7db55fd5-6c5d-415f-8e8c-734746a680c5.png">
+<br>Checking into the source's source code, we see another hint<br>
+<br><img width="830" alt="image" src="https://user-images.githubusercontent.com/79892065/162562996-03020007-0842-4177-8dd9-a2e9986ce525.png">
+<br>``<!--Jeale loves styling the website! -->``
+<br>Check the css file of this website. it's located in /style.css<br>
+<br>In the css file we see this<br>
+<br><img width="745" alt="image" src="https://user-images.githubusercontent.com/79892065/162563026-8b4e9f1b-4265-4bde-a40e-b86d5b0b4c4a.png">
 <br>``/* Hint: I made a favicon for Jeale's website and she likes it! There' nothing inside the image, for real!*/``
 <br>Favicon... maybe it's related to steganography.
-<br>The favicon file is in /ctf/home/favicon.jpg since the source code is located in /home 
+<br>The favicon file is in /favicon.jpg according to the source code
 <br><img width="537" alt="image" src="https://user-images.githubusercontent.com/79892065/159478555-0a4ca0ad-5fec-410a-a63d-48268faf330a.png">
 
 * Hints
     * Steganography
         * favicon.jpg
 
-<br><img width="639" alt="image" src="https://user-images.githubusercontent.com/79892065/159642212-6835613f-55ca-4d1f-bd53-e800e39a0d72.png">
-<br>Looking deeper into the source code, there is a hint telling us to stop right there. So let's stop looking down to the source code.<br><br>
-<br>The source code we just looked into is the /home, why not we try to look into the /ctf/about, /ctf/testimonials/ and /ctf/contacts/ since their source code is not obfuscated
+<br>Looking deeper into the source code, there is a hint telling us to stop right there. So let's stop looking down to the source code.<br>
+<br><img width="702" alt="image" src="https://user-images.githubusercontent.com/79892065/162563342-833ea150-6dbc-4001-8609-62cd8595c53c.png">
+<br>The source code we just looked into is the /home, so let's try lookingw into the /about, /testimonials/ and /contacts/
 <br>All of them says that "Coming Soon' and a number showing the days left<br>
 <br><img width="711" alt="image" src="https://user-images.githubusercontent.com/79892065/159479389-40ad7952-a68b-49f4-9042-1001f32b55d0.png">
 <br>Inspect element is also disabled so let's look into the source code
-<br>In /ctf/about we see
+<br>In /about we see
 <br>``<!-- I remember Jeale names her folder with some numbers and hides it after the page url, and each of the numbers are different every time. Where does these numbers come from?-->``
-<br>Damn, remember the numbers we got earlier that says "" days left? We can do something like https://[url]/about/[number]
-<br>We can also look into /ctf/testimonials/ and /ctf/contacts and try like https://[url]/testinomails/[number] and https://[url]/contacts/[number]
+<br>Damn, remember the numbers we got earlier that says "" days left? We can do something like https://jealectf.ml/about/[number]
+<br>We can also look into /ctf/testimonials/ and /ctf/contacts and try like https://jealectf.ml/testinomails/[number] and https://jealectf.ml/contacts/[number]
 <br>Remember that the numbers are different so change different numbers in different pages would get you the third flag!
 
 * Flag
@@ -86,15 +84,15 @@ Hello! This is the writeup for the Jeale CTF, let's jump straight into it!<br>
     * Steganography
         * favicon.jpg
 
-<br>Alright, let's continue the /jeales_vigenere.html and /W4ht_a3di0_1s_th1s.html we got from the second robots.txt file earlier
-<br>We'll visit /jeales_vigenere.html first
+<br>Alright, let's continue the /jeales_vigenere and /W4ht_a3di0_1s_th1s we got from the second robots.txt file earlier
+<br>We'll visit /jeales_vigenere first
 <br>We get:<br> ``cipher = Qmpas ioeyqr gg avf AWH q qpxai dgz, avt zojl: "Hltad, W'ks awprrf fp kaja fuahlsud tv o waam nism rpzasw k1r1_d@fkp0ifV." M fuyl ndyu hptd iv vftp tm uxbs vxf iwsa irgkaghx, xateve...``
-<br>The encoded key is hexdump and it looks like png...<br>
+<br>The encoded key is hexdump and it looks like png<br>
 <br><img width="599" alt="image" src="https://user-images.githubusercontent.com/79892065/161654076-deeaa4f6-ebf4-4c53-84c2-f433ae4cea9e.png">
 <br>As we can see there is a cipher text and an encodedkey, so we need to decipher the cipher text using the key
-<br>This is a vigenere cipher according to /jeales_vigenere.html
+<br>This is a vigenere cipher according to /jeales_vigenere
 <br>It also gives us hint to use cyberchef<br>
-<br><img width="435" alt="image" src="https://user-images.githubusercontent.com/79892065/161654296-19638f96-a6ba-4746-bf63-a68951bc969b.png">
+<br><img width="398" alt="image" src="https://user-images.githubusercontent.com/79892065/162563463-698b9e2d-7d6e-4321-9401-305bf81b9c5f.png">
 <br>Opening cyberchef and decode the key with the magic pen and we get a hash<br>
 <br><img width="770" alt="image" src="https://user-images.githubusercontent.com/79892065/161654388-70a39fbf-7c18-4d22-8278-1b45a3949a9f.png">
 <br><img width="763" alt="image" src="https://user-images.githubusercontent.com/79892065/161654448-2b480058-e9b9-4a3d-a80e-153bc8a5b99c.png">
@@ -102,9 +100,8 @@ Hello! This is the writeup for the Jeale CTF, let's jump straight into it!<br>
 <br><img width="827" alt="image" src="https://user-images.githubusercontent.com/79892065/161654502-d2f9e786-c0b5-40ef-b68d-79a427026030.png">w
 <br>So since it is vigenere cipher we can decipher it on cyberchef<br>
 <br><img width="756" alt="image" src="https://user-images.githubusercontent.com/79892065/161654678-c7d2aa95-4724-48b6-a7e3-38011f24e456.png">
-<br>We decipherd it!
 <br>``Jeale talked to her ISP a while ago, she said: "Hello, I've hidden my wifi password in a html file called w1f1_p@ssw0rrD." I need your help to help me find her wifi password, please...``
-<br>Aight, let's go to /ctf/w1f1_p@ssw0rrD.html<br>
+<br>Aight, let's go to /w1f1_p@ssw0rrD<br>
 <br><img width="954" alt="image" src="https://user-images.githubusercontent.com/79892065/159483338-71a77cc0-b40e-482a-b37a-6356c5085f7a.png">
 <br>This looks like rot13 so let's decipher it<br>
 <br><img width="767" alt="image" src="https://user-images.githubusercontent.com/79892065/159483434-74da27c8-7c0c-4b29-98ab-99f2c9aea9b8.png">
@@ -122,7 +119,7 @@ Hello! This is the writeup for the Jeale CTF, let's jump straight into it!<br>
 <br>Downloading the wifi .cap file we can brute force it with rockyou.txt :>
 <br>To make sure it's a handshake file run eapol on wireshark and yes it is!<br>
 <br><img width="430" alt="image" src="https://user-images.githubusercontent.com/79892065/159484318-b91a22d0-891a-4635-a4f5-66319f3639c1.png">
-<br>The source code of /ctf/w1f1_p@ssw0rrd also says this
+<br>The source code of /w1f1_p@ssw0rrd also says
 <br>``<!--Is wifi password crackable?-->``
 <br>Running the code ``aircrack-ng jeale_s4cret_n4tw0rk_data.cap -w /usr/share/wordlists/rockyou.txt`` on Kali Linux and it would take a while to brute force with rockyou.txt so be patient :S<br>
 <br><img width="699" alt="image" src="https://user-images.githubusercontent.com/79892065/159494753-552bbbdc-0ce7-44d9-bc4d-3a042ad8ff0c.png">
@@ -136,7 +133,7 @@ Hello! This is the writeup for the Jeale CTF, let's jump straight into it!<br>
         * favicon.jpg
             * imsohandsome
 
-<br>Now, let's check on another html file /ctf/W4ht_a3di0_1s_th1s.html<br>
+<br>Now, let's check on another html file /W4ht_a3di0_1s_th1s<br>
 <br><img width="903" alt="image" src="https://user-images.githubusercontent.com/79892065/159495211-858fb0b0-1f47-403c-92e2-0fb7e86522d6.png">
 <br>``w6JP xVG6 DE@=6? D@>6 2F5:@ 7:=6D 7C@> y62=6VD 4@>AFE6C 3FE x 92G6 23D@=FE6=J ?@ 4=F6 23@FE :E[ 42? J@F 96=A >6 @FEn``
 <br>Hm, checking the source code it says ``<!--Jeale loves many numbers, one of them is 47-->``
@@ -247,9 +244,9 @@ d1457b72c3fb323a2671125aef3eab5d``
 <br><img width="818" alt="image" src="https://user-images.githubusercontent.com/79892065/161678012-0035917d-3e5f-457b-8a46-6436436753c1.png">
 <br>Yup! Clicking into April 4th we see this<br>
 <br><img width="939" alt="image" src="https://user-images.githubusercontent.com/79892065/161678225-a4df89f3-cf3d-45ae-8fcb-cbf55a09282a.png">
-<br>Let's send an email to ``jealesaints@gmail.com``
-<br><img width="445" alt="image" src="https://user-images.githubusercontent.com/79892065/161438117-89887493-8907-42c6-b0a3-8f9b51f4a935.png">
-<br>It worked! Checking into the url we see ``https://jeale.ml/ctf/youaresokind.zip``
+<br>Let's send an email to ``jealesaints@gmail.com``<br>
+<br><img width="422" alt="image" src="https://user-images.githubusercontent.com/79892065/162563771-a137cc0b-d508-4c1b-a813-cfc748a2ddbf.png">
+<br>It worked! Checking into the url we see ``https://jealectf.ml/youaresokind.zip``
 <br>Download the ``youaresokind.zip`` file and we got a money.jpg file
 <br>In Kali Linux, running the command ``binwalk -e money.jpg`` tells us that there's a hidden zip archieve file<br>
 <br><img width="949" alt="image" src="https://user-images.githubusercontent.com/79892065/159521380-4c6c6a40-2ae0-499b-8c18-0981d14176fa.png">
