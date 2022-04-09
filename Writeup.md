@@ -75,7 +75,7 @@ Hello! This is the writeup for the Jeale CTF, let's jump straight into it!<br>
 <br>In /about we see
 <br>``<!-- I remember Jeale names her folder with some numbers and hides it after the page url, and each of the numbers are different every time. Where does these numbers come from?-->``
 <br>Damn, remember the numbers we got earlier that says "" days left? We can do something like https://jealectf.ml/about/[number]
-<br>We can also look into /ctf/testimonials/ and /ctf/contacts and try like https://jealectf.ml/testinomails/[number] and https://jealectf.ml/contacts/[number]
+<br>We can also look into /testimonials/ and /contacts and try like https://jealectf.ml/testinomails/[number] and https://jealectf.ml/contacts/[number]
 <br>Remember that the numbers are different so change different numbers in different pages would get you the third flag!
 
 * Flag
