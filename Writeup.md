@@ -74,9 +74,39 @@ Hello! This is the writeup for the Jeale CTF, let's jump straight into it!<br>
 <br>Inspect element is also disabled so let's look into the source code
 <br>In /about we see
 <br>``<!-- I remember Jeale names her folder with some numbers and hides it after the page url, and each of the numbers are different every time. Where does these numbers come from?-->``
-<br>Damn, remember the numbers we got earlier that says "" days left? We can do something like https://jealectf.ml/about/[number]
-<br>We can also look into /testimonials/ and /contacts and try like https://jealectf.ml/testinomails/[number] and https://jealectf.ml/contacts/[number]
-<br>Remember that the numbers are different so change different numbers in different pages would get you the third flag!
+<br>Remember the numbers we got earlier that says "" days left? We can do something like https://jealectf.ml/about/[number]
+<br>We can also look into /testimonials/ and /contacts and try https://jealectf.ml/testinomails/[number] and https://jealectf.ml/contacts/[number]
+<br>Remember that the numbers are different so change different numbers in different pages
+<br>Let's go to /about/365 and see what it shows us<br>
+<br><img width="904" alt="image" src="https://user-images.githubusercontent.com/79892065/165931695-7b2f2dee-a295-4344-90d8-7db44dcfede8.png">
+<br>In /testimonials/253
+<br>``GO TO``<br>
+<br><img width="767" alt="image" src="https://user-images.githubusercontent.com/79892065/165931778-6a1b795b-c1d4-4eed-9c0b-cac1c2c83e62.png">
+<br>``https://jealectf.ml/``
+<br>In /contacts/60
+<br>``cipher_time``<br>
+<br><img width="707" alt="image" src="https://user-images.githubusercontent.com/79892065/165931943-5fe980c4-c108-4de9-9142-50a13250f380.png">
+<br>It says ``Go to https://jealectf.ml/cipher_time`` so let's go there and check it out<br>
+<br><img width="784" alt="image" src="https://user-images.githubusercontent.com/79892065/165932535-fb2fba79-8ed1-485a-a5ca-86f93d1f6fbb.png">
+<br>Downloading the files on Kali Linux and let's check the hintdumped.txt file first<br>
+<br><img width="591" alt="image" src="https://user-images.githubusercontent.com/79892065/165934769-cf247e1f-2069-49b0-aec5-a62d40cb51e5.png">
+<br>That looks like hexdump, run ``xxd -r hintdumped.txt > hint.txt`` to convert into plain text<br>
+<br><img width="948" alt="image" src="https://user-images.githubusercontent.com/79892065/165934855-cad82a53-1868-4885-a773-a0fde35521b6.png">
+<br>We need to unescape the unicode characters, here again I'm using cyberchef :><br>
+<br><img width="769" alt="image" src="https://user-images.githubusercontent.com/79892065/165934971-1da88fce-791b-457a-a116-cfcb7a530532.png">
+<br>We get a set of numbers, let's try to decode them with ascii<br>
+<br><img width="765" alt="image" src="https://user-images.githubusercontent.com/79892065/165935165-c23ed194-6772-41c6-9d7d-76590c7a20e5.png">
+<br>Magic pen appears and tells us to use A1Z26 Cipher Decode, and the result is ``hintwhatisthefilesignatureofajpgfile``
+<br>Since the hint tells us what is the file signature of a jpg file, googling it tells us the result<br>
+<br><img width="706" alt="image" src="https://user-images.githubusercontent.com/79892065/165946393-1b911168-9d21-44b6-916b-870ad99be103.png">
+<br>Going back to Kali Linux, we can use a tool called hexeditor, do ``hexeditor unknownfile`` 
+<br><img width="955" alt="image" src="https://user-images.githubusercontent.com/79892065/165946162-5251c3c6-4e7e-473a-8033-08e6c3f1467b.png">
+<br>It looks like the jpg file is corrupted and the header has been changed to "JEALE"
+<br>We can also see that its jfif, and according to the file signature above tells us that its original hex is ``FF D8 FF E0 00 10 4A 46
+49 46 00 01``
+<br><img width="945" alt="image" src="https://user-images.githubusercontent.com/79892065/165946771-58252f76-2365-4426-9641-b932fd7c7362.png">
+<br>Modify it in hexeditor and save the file<br>
+<br>Now rename the extension to jpg by doing ``mv unknownfile unknownfile.jpg``, view the image and we get the third flag!<br>
 
 * Flag
     * Third flag acquired
@@ -84,8 +114,8 @@ Hello! This is the writeup for the Jeale CTF, let's jump straight into it!<br>
     * Steganography
         * favicon.jpg
 
-<br>Alright, let's continue the /jeales_vigenere and /W4ht_a3di0_1s_th1s we got from the second robots.txt file earlier
-<br>We'll visit /jeales_vigenere first
+<br>Alright, let's continue the ``/jeales_vigenere`` and ``/W4ht_a3di0_1s_th1s`` we got from the second robots.txt file earlier
+<br>We'll visit ``/jeales_vigenere`` first
 <br>We get:<br> ``cipher = Qmpas ioeyqr gg avf AWH q qpxai dgz, avt zojl: "Hltad, W'ks awprrf fp kaja fuahlsud tv o waam nism rpzasw k1r1_d@fkp0ifV." M fuyl ndyu hptd iv vftp tm uxbs vxf iwsa irgkaghx, xateve...``
 <br>The encoded key is hexdump and it looks like png<br>
 <br><img width="599" alt="image" src="https://user-images.githubusercontent.com/79892065/161654076-deeaa4f6-ebf4-4c53-84c2-f433ae4cea9e.png">
@@ -101,7 +131,7 @@ Hello! This is the writeup for the Jeale CTF, let's jump straight into it!<br>
 <br>So since it is vigenere cipher we can decipher it on cyberchef<br>
 <br><img width="756" alt="image" src="https://user-images.githubusercontent.com/79892065/161654678-c7d2aa95-4724-48b6-a7e3-38011f24e456.png">
 <br>``Jeale talked to her ISP a while ago, she said: "Hello, I've hidden my wifi password in a html file called w1f1_p@ssw0rrD." I need your help to help me find her wifi password, please...``
-<br>Aight, let's go to /w1f1_p@ssw0rrD<br>
+<br><br>Alright, now let's go to /w1f1_p@ssw0rrD<br>
 <br><img width="954" alt="image" src="https://user-images.githubusercontent.com/79892065/159483338-71a77cc0-b40e-482a-b37a-6356c5085f7a.png">
 <br>This looks like rot13 so let's decipher it<br>
 <br><img width="767" alt="image" src="https://user-images.githubusercontent.com/79892065/159483434-74da27c8-7c0c-4b29-98ab-99f2c9aea9b8.png">
@@ -119,7 +149,7 @@ Hello! This is the writeup for the Jeale CTF, let's jump straight into it!<br>
 <br>Downloading the wifi .cap file we can brute force it with rockyou.txt :>
 <br>To make sure it's a handshake file run eapol on wireshark and yes it is!<br>
 <br><img width="430" alt="image" src="https://user-images.githubusercontent.com/79892065/159484318-b91a22d0-891a-4635-a4f5-66319f3639c1.png">
-<br>The source code of /w1f1_p@ssw0rrd also says
+<br>The source code of ``/w1f1_p@ssw0rrd`` also says
 <br>``<!--Is wifi password crackable?-->``
 <br>Running the code ``aircrack-ng jeale_s4cret_n4tw0rk_data.cap -w /usr/share/wordlists/rockyou.txt`` on Kali Linux and it would take a while to brute force with rockyou.txt so be patient :S<br>
 <br><img width="699" alt="image" src="https://user-images.githubusercontent.com/79892065/159494753-552bbbdc-0ce7-44d9-bc4d-3a042ad8ff0c.png">
@@ -133,19 +163,21 @@ Hello! This is the writeup for the Jeale CTF, let's jump straight into it!<br>
         * favicon.jpg
             * imsohandsome
 
-<br>Now, let's check on another html file /W4ht_a3di0_1s_th1s<br>
-<br><img width="903" alt="image" src="https://user-images.githubusercontent.com/79892065/159495211-858fb0b0-1f47-403c-92e2-0fb7e86522d6.png">
-<br>``w6JP xVG6 DE@=6? D@>6 2F5:@ 7:=6D 7C@> y62=6VD 4@>AFE6C 3FE x 92G6 23D@=FE6=J ?@ 4=F6 23@FE :E[ 42? J@F 96=A >6 @FEn``
-<br>Hm, checking the source code it says ``<!--Jeale loves many numbers, one of them is 47-->``
-<br>ROT47 is the only solution so let's decipher the message
-<br><img width="766" alt="image" src="https://user-images.githubusercontent.com/79892065/159495488-3970bdb5-b205-4c02-8960-1d2271bb9164.png">
-<br>``Hey! I've stolen some audio files from Jeale's computer but I have absolutely no clue about it, can you help me out?``
-<br>Just a description... Let's download the audio files and analyze them
-<br> Maybe its audio spectrogram? <br>
-<br><img width="316" alt="image" src="https://user-images.githubusercontent.com/79892065/159496205-36c2acd7-d698-469f-81ac-45f2eacdbf92.png"><br>
-<br><img width="317" alt="image" src="https://user-images.githubusercontent.com/79892065/159496261-261f214c-15a8-4824-bb7b-f3e129323ba9.png"><br>
-<br><img width="320" alt="image" src="https://user-images.githubusercontent.com/79892065/159496307-62b7da83-c7ea-4173-9e54-a2f73793c9a9.png">
-<br>We got 6 hashes! Let's write it down to a text editor
+<br>Now we can on another html file ``/W4ht_a3di0_1s_th1s``<br>
+<br><img width="938" alt="image" src="https://user-images.githubusercontent.com/79892065/165947795-89ccdafa-4cf2-4b56-9eac-23d6264bc808.png">
+<br>``qlz (apqzgpmqawpmn kfmhz kqmqawp) sgwmehmkqze m kzhgzq vzkkmoz qw bzmnz. kaphz qlz vzkkmoz umk szapo sgwmehmkqze izgr (knwunr), kwvzwpz (khmppze) qlz vzkkmoz xkapo qlzag izgr (wne qznziakawp) sxq mnn qlzr hwxne lzmg uzgz kwvz eakqwgqze pwakzk….. fzglmfk rwx hmp lznf xk kwniz aq?``
+<br>Hm, checking the source code it says ``<!--What is substitution cipher?-->``
+<br>We can use online tools like ``https://www.guballa.de/substitution-solver`` to auto decipher it for us<br>
+<br><img width="485" alt="image" src="https://user-images.githubusercontent.com/79892065/165948147-19233351-37e8-48d3-9b06-677732d821a1.png">
+<br>`the (international space station) broadcasted a secret message to feale. since the message was being broadcasted very (slowly), someone (scanned) the message using their very (old television) but all they could hear were some distorted noises….. perhaps you can help us solve it?
+``
+<br>Description says (international space station), (slowly scanned) and (old television)
+<br>Googling it tells us that is slow-scan television
+<br><img width="569" alt="image" src="https://user-images.githubusercontent.com/79892065/165948349-1a6390c2-275c-456d-8b79-d001d58d78c6.png">
+<br>Downloading the audio file we hear some sort of radio voice going on
+<brAccording to description, we can use tools like MMSSTV (windows) and QSSTV (linux) to decode<br>
+<br><img width="958" alt="image" src="https://user-images.githubusercontent.com/79892065/165948722-eca78803-3c5b-4649-a1cf-a318ed87405a.png">
+<br>We got 6 hashes! Remember to write it down into a text editor
 <br>``b27cac074cc5c17f83c7c9e8071002e3
 639bae9ac6b3e1a84cebb7b403297b79
 383c9968e79cb9a21d3cdde052a86acf
