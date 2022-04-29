@@ -169,8 +169,8 @@ Hello! This is the writeup for the Jeale CTF, let's jump straight into it!<br>
 <br>Hm, checking the source code it says ``<!--What is substitution cipher?-->``
 <br>We can use online tools like ``https://www.guballa.de/substitution-solver`` to auto decipher it for us<br>
 <br><img width="485" alt="image" src="https://user-images.githubusercontent.com/79892065/165948147-19233351-37e8-48d3-9b06-677732d821a1.png">
-<br>`the (international space station) broadcasted a secret message to feale. since the message was being broadcasted very (slowly), someone (scanned) the message using their very (old television) but all they could hear were some distorted noises….. perhaps you can help us solve it?
-``
+<br>the (international space station) broadcasted a secret message to feale. since the message was being broadcasted very (slowly), someone (scanned) the message using their very (old television) but all they could hear were some distorted noises….. perhaps you can help us solve it?
+<br>
 <br>Description says (international space station), (slowly scanned) and (old television)
 <br>Googling it tells us that is slow-scan television
 <br><img width="569" alt="image" src="https://user-images.githubusercontent.com/79892065/165948349-1a6390c2-275c-456d-8b79-d001d58d78c6.png">
