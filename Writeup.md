@@ -4,8 +4,7 @@ Hello! This is the writeup for the Jeale CTF, let's jump straight into it!<br>
 <br><img width="443" alt="image" src="https://user-images.githubusercontent.com/79892065/159476078-fd5c6711-9124-4aed-b470-58a9db9ef09b.png">
 <br>Going to https://jeale.ml/ and reading the rules, We know that the flag format is CTF{}, and there are 3 flags in the website.
 <br>So let's head off to the challenge section. Once we clicked on it, it redirects us to https://jealectf.ml/challenge.<br>
-<br><img width="892" alt="image" src="https://user-images.githubusercontent.com/79892065/159476255-a0835576-6e2c-47fe-b178-9ad5f93a57cf.png">
-<br>So this must be the challenge description
+<img width="920" alt="image" src="https://user-images.githubusercontent.com/79892065/167134223-965dd62c-bfa5-4ab3-a78c-2f198c7d5f7b.png">
 <br>After we clicked "Start from here", we were redirected to /home.
 <br>Let's check the robots.txt in /robots.txt and we see this<br>
 <br><img width="455" alt="image" src="https://user-images.githubusercontent.com/79892065/162562368-d1d1f7ff-94ec-4451-ab4d-fc9d87d7f902.png">
